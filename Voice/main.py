@@ -1,16 +1,15 @@
-# This is a sample Python script.
+import pyttsx3
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+engine = pyttsx3.init()
 
+voices = engine.getProperty('voices')
+index = 0
+for voice in voices:
+   print(f'index-> {index} -- {voice.name}')
+   index +=1
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+engine.setProperty("voice",voices[1].id)
+engine.setProperty("rate",150)
+while True:
+    engine.say("Patryk nie ma jajek")
+    engine.runAndWait()
